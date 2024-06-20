@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import MovieCard from "./MovieCard";
 import SearchIcon from "./search.svg";
 import "./App.css";
@@ -21,6 +20,13 @@ const App = () => {
     setMovies(data.Search);
   };
 
+  // Added function to handle Enter key press
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      searchMovies(searchTerm);
+    }
+  };
+
   return (
     <div className="app">
       <h1>MovieLand</h1>
@@ -29,6 +35,8 @@ const App = () => {
         <input
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
+          // Added onKeyPress event listener
+          onKeyPress={handleKeyPress}
           placeholder="Search for movies"
         />
         <img
@@ -41,7 +49,8 @@ const App = () => {
       {movies?.length > 0 ? (
         <div className="container">
           {movies.map((movie) => (
-            <MovieCard movie={movie} />
+            // Added key prop to MovieCard
+            <MovieCard key={movie.imdbID} movie={movie} />
           ))}
         </div>
       ) : (
