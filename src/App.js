@@ -21,7 +21,7 @@ const App = () => {
   };
 
   // Added function to handle Enter key press
-  const handleKeyPress = (event) => {
+  const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       searchMovies(searchTerm);
     }
@@ -36,7 +36,7 @@ const App = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           // Added onKeyPress event listener
-          onKeyPress={handleKeyPress}
+          onKeyDown={handleKeyDown}
           placeholder="Search for movies"
         />
         <img
