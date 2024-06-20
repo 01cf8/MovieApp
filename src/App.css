@@ -40,16 +40,6 @@ h1 {
   width: fit-content;
 }
 
-.container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.container > div {
-  max-width: 300px;
-}
-
 .search {
   width: 71%;
   margin: 4rem 0 2rem;
