@@ -20,8 +20,7 @@ const App = () => {
     setMovies(data.Search);
   };
 
-  // Added function to handle Enter key press
-  const handleKeyDown = (event) => {
+  const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       searchMovies(searchTerm);
     }
@@ -35,8 +34,7 @@ const App = () => {
         <input
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          // Added onKeyPress event listener
-          onKeyDown={handleKeyDown}
+          onKeyPress={handleKeyPress}
           placeholder="Search for movies"
         />
         <img
@@ -48,10 +46,13 @@ const App = () => {
 
       {movies?.length > 0 ? (
         <div className="container">
-          {movies.map((movie) => (
-            // Added key prop to MovieCard
-            <MovieCard key={movie.imdbID} movie={movie} />
-          ))}
+          {movies.slice(0, 9).map(
+            (
+              movie // Display only 9 movies
+            ) => (
+              <MovieCard key={movie.imdbID} movie={movie} />
+            )
+          )}
         </div>
       ) : (
         <div className="empty">
